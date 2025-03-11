@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../styles/AuthForm.css';
 import tripImage from './images/trip.png';
 import campingImage from './images/camping.png';
+import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome CSS
 
 const AuthForm = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
@@ -33,7 +34,7 @@ const AuthForm = () => {
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
               <a href="#" className="social-icon">
-                <i className="fab fa-facebook"></i>
+                <i className="fab fa-facebook-f"></i> {/* Corrected Facebook icon name */}
               </a>
               <a href="#" className="social-icon">
                 <i className="fab fa-twitter"></i>
@@ -66,7 +67,7 @@ const AuthForm = () => {
             <p className="social-text">Or Sign up with social platforms</p>
             <div className="social-media">
               <a href="#" className="social-icon">
-                <i className="fab fa-facebook"></i>
+                <i className="fab fa-facebook-f"></i> {/* Corrected Facebook icon name */}
               </a>
               <a href="#" className="social-icon">
                 <i className="fab fa-twitter"></i>
