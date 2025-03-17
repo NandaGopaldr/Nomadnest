@@ -3,34 +3,58 @@ import '../styles/AuthForm.css';
 import tripImage from './images/trip.png';
 import campingImage from './images/camping.png';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome CSS
+import { useNavigate } from "react-router-dom";
+import '../components/Dashboard';
 
 const AuthForm = () => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
-
+  const navigate = useNavigate();
   const handleSignUpClick = () => {
     setIsSignUpMode(true);
   };
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSignInClick = () => {
     setIsSignUpMode(false);
   };
 
+  
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (username === "admin" && password === "124") {
+      navigate("/dashboard");  // Navigate to Dashboard if credentials are correct
+    } else {
+      alert("Invalid username or password");
+    }
+  };
+  
+
   return (
     <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''}`}>
       <div className="forms-container">
         <div className="signin-signup">
-          <form action="" className="sign-in-form">
+          <form action="" className="sign-in-form"  onSubmit={handleLogin}>
             <h2 className="title">Sign in</h2>
             <div className="input-field">
               <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <input 
+                type="text" 
+                placeholder="Username" 
+                value={username} 
+                onChange={(e) => setUsername(e.target.value)} 
+              />
             </div>
             <div className="input-field">
               <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <input 
+                type="password" 
+                placeholder="Password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+              />
             </div>
-            <input type="submit" value="Login" className="btn solid" />
-
+            <input type="submit" value="Login" className="btn solid" onClick={handleLogin} />
             <p className="social-text">Or Sign in with social platforms</p>
             <div className="social-media">
               <a href="#" className="social-icon">
@@ -117,3 +141,4 @@ const AuthForm = () => {
 };
 
 export default AuthForm;
+
